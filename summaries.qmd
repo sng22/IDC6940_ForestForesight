@@ -19,19 +19,91 @@ editor:
 ---
 
 https://papers.nips.cc/paper_files/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf Links to an external site.
+
 1.	Interpretability vs. Accuracy: While complex models (e.g., deep learning, ensemble methods) often yield higher accuracy, they are harder to interpret. This poses challenges in applications where understanding model decisions is critical.
+
 2.	Unified Framework: SHAP provides an approach to interpreting model predictions by introducing a new class of additive features and important measures. Their are various existing interpretation methods (e.g., LIME, DeepLIFT, Layer-Wise Relevance Propagation) fall within.
+
 3.	Game Theory Foundation: SHAP values are grounded in game theory, specifically the Shapley values, which ensure that the features satisfy properties like local accuracy, missingness, and consistency.
 
 https://jqichina.wordpress.com/wp-content/uploads/2012/02/the-elements-of-statistical-learning.pdf Links to an external site.
+
+
+
 Tree-Based Methods:
+
 1•	Decision Trees: The book covers decision tree algorithms, including classification and regression trees (CART). It explains how trees can be used for both classification and regression tasks, highlighting their interpretability and ease of use.
-2•	Ensemble Methods: Powerful ensemble methods such as bagging, boosting, and random forests. These techniques combine multiple models to improve predictive performance
+
+2•	Ensemble Methods: Powerful ensemble methods such as bagging, boosting, and random forests. These techniques combine multiple models to improve predictive performance.
+
+
 
 https://www.researchgate.net/profile/Gilles-Louppe/publication/264312332_Understanding_Random_Forests_From_Theory_to_Practice/links/54ae38ea0cf2213c5fe427b7/Understanding-Random-Forests-From-Theory-to-Practice.pdf Links to an external site. 
 
-1•	Tree Construction: Each tree in a Random Forest is built using a random subset of features and training data. This randomness helps in making the model robust against over fitting.
+1•	Tree Construction: Each tree in a Random Forest is built using a random subset of features and training data. This randomness helps in making the model robust against over fitting. 
+
 2•	Feature Importance: The paper discusses how Random Forests can be used to determine the importance of various features in predicting the target variable. The importance is calculated by looking at how much each feature decreases the impurity in a tree.
+
 3•	Out-of-Bag Error: The out-of-bag error is an unbiased estimate of the model’s prediction error, obtained by using only the samples that were not used in building a particular tree (out-of-bag samples).
+
+
+
+                 "Random Forests" by Leo Breiman (2001)
+
+              Published in: Machine Learning, 45(1), 5-32
+                    DOI: 10.1023/A:1010933404324
+                    
+                    
+Key points:
+
+
+1. Introduces random forest algorithm
+
+2. Discusses the theoretical foundations for random forests
+
+3. Demonstrates their effectiveness in various classification and regression tasks
+
+4. Explores the concept of out-of-bag error estimation
+
+
+
+
+
+"Do we Need Hundreds of Classifiers to Solve Real World Classification Problems?" by Manuel                    Fernández-Delgado, Eva Cernadas, Senén Barro, and Dinani Amorim (2014)
+
+          Published in: Journal of Machine Learning Research, 15(1), 3133-3181
+          URL: https://www.jmlr.org/papers/volume15/delgado14a/delgado14a.pdf
+          
+          
+Key points:
+
+
+1. Compares 179 classifiers from 17 families on 121 datasets
+
+2. Finds that random forests are among the best performing classifiers
+
+3. Discusses the trade-offs between different classifier families
+
+4. Provides insights into when random forests might be particularly effective
+
+
+
+
+"Bias in random forest variable importance measures: Illustrations, sources and a solution" by Carolin            Strobl, Anne-Laure Boulesteix, Achim Zeileis, and Torsten Hothorn (2007)
+
+                        Published in: BMC Bioinformatics, 8(1), 25
+                               DOI: 10.1186/1471-2105-8-25
+                               
+                               
+                               
+Key points:
+
+1. Identifies biases in random forest variable importance measures
+
+2. Demonstrates how these biases can lead to misleading interpretations
+
+3. Proposes a conditional permutation importance measure as a solution
+
+4. Discusses implications for feature selection and model interpretation in bioinformatics and other fields
 
 
