@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
-</style>
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}</style>
 
 
 <script>/*!
@@ -3072,65 +3092,74 @@ vertical-align: -.125em;
 </header>
 
 
-<p>https://papers.nips.cc/paper_files/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf Links to an external site.</p>
-<ol type="1">
-<li><p>Interpretability vs. Accuracy: While complex models (e.g., deep learning, ensemble methods) often yield higher accuracy, they are harder to interpret. This poses challenges in applications where understanding model decisions is critical.</p></li>
-<li><p>Unified Framework: SHAP provides an approach to interpreting model predictions by introducing a new class of additive features and important measures. Their are various existing interpretation methods (e.g., LIME, DeepLIFT, Layer-Wise Relevance Propagation) fall within.</p></li>
-<li><p>Game Theory Foundation: SHAP values are grounded in game theory, specifically the Shapley values, which ensure that the features satisfy properties like local accuracy, missingness, and consistency.</p></li>
-</ol>
-<hr>
-<p>https://jqichina.wordpress.com/wp-content/uploads/2012/02/the-elements-of-statistical-learning.pdf Links to an external site.</p>
-<p>Tree-Based Methods:</p>
-<p>1• Decision Trees: The book covers decision tree algorithms, including classification and regression trees (CART). It explains how trees can be used for both classification and regression tasks, highlighting their interpretability and ease of use.</p>
-<p>2• Ensemble Methods: Powerful ensemble methods such as bagging, boosting, and random forests. These techniques combine multiple models to improve predictive performance.</p>
-<hr>
-<p>https://www.researchgate.net/profile/Gilles-Louppe/publication/264312332_Understanding_Random_Forests_From_Theory_to_Practice/links/54ae38ea0cf2213c5fe427b7/Understanding-Random-Forests-From-Theory-to-Practice.pdf Links to an external site.</p>
-<p>1• Tree Construction: Each tree in a Random Forest is built using a random subset of features and training data. This randomness helps in making the model robust against over fitting.</p>
-<p>2• Feature Importance: The paper discusses how Random Forests can be used to determine the importance of various features in predicting the target variable. The importance is calculated by looking at how much each feature decreases the impurity in a tree.</p>
-<p>3• Out-of-Bag Error: The out-of-bag error is an unbiased estimate of the model’s prediction error, obtained by using only the samples that were not used in building a particular tree (out-of-bag samples).</p>
-<hr>
-<pre><code>             &quot;Random Forests&quot; by Leo Breiman (2001
+<section id="random-forest-in-machine-learning-a-review-of-recent-advancements" class="level1">
+<h1>Random Forest in Machine Learning: A Review of Recent Advancements</h1>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>This paper reviews six influential works in the field of machine learning, with a focus on Random Forest algorithms and their applications. We examine the development of interpretation methods, the foundational concepts of statistical learning, the theoretical underpinnings of Random Forests, and recent empirical studies comparing various classifiers. The review highlights the versatility and effectiveness of Random Forests while also addressing challenges such as bias in variable importance measures.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">1. Introduction</h2>
+<p>Machine learning techniques, particularly Random Forest algorithms, have become increasingly important in various domains due to their robustness and versatility. This paper synthesizes findings from six key papers that have contributed significantly to our understanding and application of Random Forests and related techniques in machine learning.</p>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">2. Methodology</h2>
+<p>This review examines six papers published between 2001 and 2017, covering theoretical foundations, practical applications, and comparative studies of Random Forests and related machine learning techniques.</p>
+</section>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">3. Results and Discussion</h2>
+<section id="unified-approach-to-model-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="unified-approach-to-model-interpretation">3.1 Unified Approach to Model Interpretation</h3>
+<p>(Lundberg and Lee 2017) address the crucial challenge of balancing model complexity with interpretability. They introduce SHAP (SHapley Additive exPlanations), a unified framework for interpreting model predictions. SHAP, grounded in game theory, provides a fair method to distribute the contribution of each feature to the final prediction. This approach ensures that the interpretation method satisfies important properties such as local accuracy, missingness, and consistency. SHAP’s ability to encompass various existing interpretation methods allows for a more standardized approach to model interpretation across different types of models and domains. <span class="citation" data-cites="Lundberg2017-ww">(<a href="#ref-Lundberg2017-ww" role="doc-biblioref">Lundberg and Lee 2017</a>)</span></p>
+</section>
+<section id="foundations-of-statistical-learning" class="level3">
+<h3 class="anchored" data-anchor-id="foundations-of-statistical-learning">3.2 Foundations of Statistical Learning</h3>
+<p>(Hastie et al. 2009) provide a comprehensive overview of statistical learning techniques, with a particular focus on tree-based methods. Their work explores decision trees in depth, highlighting their versatility in both classification and regression tasks. The authors also discuss powerful ensemble methods such as bagging, boosting, and random forests, explaining how these techniques combine multiple models to improve predictive performance. This foundational text provides readers with a solid understanding of the advantages and potential drawbacks of these methods. <span class="citation" data-cites="Hastie2009-ck">(<a href="#ref-Hastie2009-ck" role="doc-biblioref">Hastie, Tibshirani, and Friedman 2009</a>)</span></p>
+</section>
+<section id="theoretical-and-practical-aspects-of-random-forests" class="level3">
+<h3 class="anchored" data-anchor-id="theoretical-and-practical-aspects-of-random-forests">3.3 Theoretical and Practical Aspects of Random Forests</h3>
+<p>(Louppe 2014) offers a comprehensive examination of Random Forests, covering both theoretical foundations and practical applications. The paper explains the tree construction process in Random Forests, emphasizing the importance of random feature subset selection in building robust models. Louppe also discusses feature importance in Random Forests, explaining how to determine the importance of various features by measuring the decrease in impurity across all trees in the forest. The concept of out-of-bag error is explored as a unique advantage of Random Forests for internal validation.<span class="citation" data-cites="Louppe2014-pi">(<a href="#ref-Louppe2014-pi" role="doc-biblioref">Louppe 2014</a>)</span></p>
+</section>
+<section id="introduction-and-theoretical-insights-into-random-forests" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-and-theoretical-insights-into-random-forests">3.4 Introduction and Theoretical Insights into Random Forests</h3>
+<p>Breiman’s seminal paper (Breiman 2001) introduces the Random Forest algorithm, which has since become one of the most popular and effective machine learning techniques. Breiman provides a thorough explanation of the algorithm’s foundations, demonstrating how it combines bagging with random feature selection at each node of the decision trees. The paper offers theoretical insights into why Random Forests work so well, discussing the impact of random feature selection on tree correlation and overall forest error rate. Breiman also introduces the concept of “tree strength” and its relationship to forest performance.<span class="citation" data-cites="Breiman2001-il">(<a href="#ref-Breiman2001-il" role="doc-biblioref">Breiman 2001</a>)</span></p>
+</section>
+<section id="comparative-study-of-classifiers" class="level3">
+<h3 class="anchored" data-anchor-id="comparative-study-of-classifiers">3.5 Comparative Study of Classifiers</h3>
+<p>(Fernández-Delgado et al. 2014) present a comprehensive empirical study comparing 179 classifiers from 17 different families across 121 datasets. Their findings strongly support the effectiveness of Random Forests, which consistently rank among the top-performing classifiers across a wide range of problems. The study discusses trade-offs between different classifier families, considering factors such as accuracy, computational efficiency, and ease of use. This extensive comparison offers valuable insights into when Random Forests might be particularly effective and provides guidance for practitioners in choosing appropriate algorithms for specific problems.<span class="citation" data-cites="Fernandez-Delgado2014-iz">(<a href="#ref-Fernandez-Delgado2014-iz" role="doc-biblioref">Fernández-Delgado et al. 2014</a>)</span></p>
+</section>
+<section id="addressing-bias-in-random-forest-variable-importance-measures" class="level3">
+<h3 class="anchored" data-anchor-id="addressing-bias-in-random-forest-variable-importance-measures">3.6 Addressing Bias in Random Forest Variable Importance Measures</h3>
+<p>(Strobl et al. 2007) address a critical issue in the interpretation of Random Forests: bias in variable importance measures. The authors demonstrate that standard variable importance measures in Random Forests can be biased, particularly when predictor variables vary in their scale of measurement or number of categories. To address this issue, they propose a conditional permutation importance measure that accounts for correlations between predictor variables, providing a more accurate assessment of each variable’s true importance. This work highlights the need for careful consideration of potential biases in machine learning interpretation techniques.<span class="citation" data-cites="Strobl2007-ks">(<a href="#ref-Strobl2007-ks" role="doc-biblioref">Strobl et al. 2007</a>)</span></p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">4. Conclusion</h2>
+<p>This review of six influential papers in the field of machine learning, with a focus on Random Forests, highlights the significant advancements made in both theoretical understanding and practical applications of these techniques. From the development of unified interpretation frameworks to comprehensive empirical studies and the addressing of biases in importance measures, these works collectively demonstrate the power and versatility of Random Forests while also acknowledging the challenges that remain. Future research should continue to build on these foundations, addressing remaining limitations and expanding the application of Random Forests to new domains.</p>
 
-          Published in: Machine Learning, 45(1), 5-32
-                DOI: 10.1023/A:1010933404324
-                
-                </code></pre>
-<p>Key points:</p>
-<ol type="1">
-<li><p>Introduces random forest algorithm</p></li>
-<li><p>Discusses the theoretical foundations for random forests</p></li>
-<li><p>Demonstrates their effectiveness in various classification and regression tasks</p></li>
-<li><p>Explores the concept of out-of-bag error estimation</p></li>
-</ol>
-<hr>
-<p>“Do we Need Hundreds of Classifiers to Solve Real World Classification Problems?” by Manuel Fernández-Delgado, Eva Cernadas, Senén Barro, and Dinani Amorim (2014)</p>
-<pre><code>      Published in: Journal of Machine Learning Research, 15(1), 3133-3181
-      URL: https://www.jmlr.org/papers/volume15/delgado14a/delgado14a.pdf
-      
-      </code></pre>
-<p>Key points:</p>
-<ol type="1">
-<li><p>Compares 179 classifiers from 17 families on 121 datasets</p></li>
-<li><p>Finds that random forests are among the best performing classifiers</p></li>
-<li><p>Discusses the trade-offs between different classifier families</p></li>
-<li><p>Provides insights into when random forests might be particularly effective</p></li>
-</ol>
-<hr>
-<p>“Bias in random forest variable importance measures: Illustrations, sources and a solution” by Carolin Strobl, Anne-Laure Boulesteix, Achim Zeileis, and Torsten Hothorn (2007)</p>
-<pre><code>                    Published in: BMC Bioinformatics, 8(1), 25
-                           DOI: 10.1186/1471-2105-8-25
-                           
-                           
-                           </code></pre>
-<p>Key points:</p>
-<ol type="1">
-<li><p>Identifies biases in random forest variable importance measures</p></li>
-<li><p>Demonstrates how these biases can lead to misleading interpretations</p></li>
-<li><p>Proposes a conditional permutation importance measure as a solution</p></li>
-<li><p>Discusses implications for feature selection and model interpretation in bioinformatics and other fields</p></li>
-</ol>
+</section>
+</section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Breiman2001-il" class="csl-entry" role="listitem">
+Breiman, Leo. 2001. <span>“Random Forests.”</span> <em>Machine Learning</em> 45 (1): 5–32.
+</div>
+<div id="ref-Fernandez-Delgado2014-iz" class="csl-entry" role="listitem">
+Fernández-Delgado, Manuel, Eva Cernadas, Senén Barro, and Dinani Amorim. 2014. <span>“Do We Need Hundreds of Classifiers to Solve Real World Classification Problems?”</span> <em>The Journal of Machine Learning Research</em> 15 (1): 3133–81.
+</div>
+<div id="ref-Hastie2009-ck" class="csl-entry" role="listitem">
+Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-Louppe2014-pi" class="csl-entry" role="listitem">
+Louppe, Gilles. 2014. <span>“Understanding Random Forests: From Theory to Practice.”</span> <em>arXiv Preprint arXiv:1407. 7502</em>.
+</div>
+<div id="ref-Lundberg2017-ww" class="csl-entry" role="listitem">
+Lundberg, Scott M, and Su-In Lee. 2017. <span>“A Unified Approach to Interpreting Model Predictions.”</span> <em>Advances in Neural Information Processing Systems</em> 30.
+</div>
+<div id="ref-Strobl2007-ks" class="csl-entry" role="listitem">
+Strobl, Carolin, Anne-Laure Boulesteix, Achim Zeileis, and Torsten Hothorn. 2007. <span>“Bias in Random Forest Variable Importance Measures: Illustrations, Sources and a Solution.”</span> <em>BMC Bioinformatics</em> 8 (1): 1–21.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
