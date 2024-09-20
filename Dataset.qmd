@@ -17,4 +17,28 @@ editor:
   markdown: 
     wrap: 72
 ---
-test
+This data is a sales order report for various food service and packaging products across different Sysco locations in the United States. 
+
+Products: The items listed include various food containers, lids, cups, cutlery, and packaging
+
+materials. Many are made of plastic, paper, or bagasse.
+
+Locations: Orders are from multiple Sysco branches, including Riverside, Atlanta, Baltimore, Connecticut, Detroit, North Texas, Arizona, Las Vegas, and others.
+
+Customers: Each order is associated with a specific customer ID and product code.
+
+Dates: The report shows requested dates and fulfillment dates, mostly in September 2024, with some orders in August 2024.
+
+Quantities: Order quantities vary, from small orders of 8-12 units to larger orders of several hundred units.
+
+Pricing: The data includes unit prices and total prices for each order.
+
+Product Types: There's a mix of product types, including bowls, lids, cups, cutlery kits, and specialized items like smoothie containers and paper wrappers.
+
+Materials: Products are made from various materials, with plastic being the most common, followed by paper.
+
+Fulfillment: Most orders appear to be fully fulfilled, with the quantity ordered matching the quantity fulfilled in many cases.
+
+Classification: The last column seems to categorize products into classes like "Bowl," "Smoo" (possibly for Smoothie), "Philly" (possibly for Philadelphia-style products), and others.
+
+This data provides a look into the distribution operations of Sysco, showing their product range, customer base, and order fulfillment across different regions.
