@@ -1,0 +1,182 @@
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-style: solid;border-width: 1px;border-color: black;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:12px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:13px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-bobw{font-weight:bold;text-align:center;vertical-align:bottom}
+.tg .tg-7zrl{text-align:left;vertical-align:bottom}
+.tg .tg-j6zm{font-weight:bold;text-align:left;vertical-align:bottom}
+.tg .tg-8d8j{text-align:center;vertical-align:bottom}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-7zrl"></th>
+    <th class="tg-j6zm">Total Orders</th>
+    <th class="tg-j6zm">Closed Short</th>
+    <th class="tg-j6zm">Fulfilled</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-7zrl"></td>
+    <td class="tg-j6zm">(n=7585)</td>
+    <td class="tg-j6zm">(n=733)</td>
+    <td class="tg-j6zm">(n=6852)</td>
+  </tr>
+  <tr>
+    <td class="tg-j6zm">Top Customers</td>
+    <td class="tg-7zrl"> </td>
+    <td class="tg-7zrl"> </td>
+    <td class="tg-7zrl"> </td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Smoothie Island</td>
+    <td class="tg-8d8j">1701 (22.43%)</td>
+    <td class="tg-8d8j">455 (62.07%)</td>
+    <td class="tg-8d8j">1246 (18.18%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Philly Bite</td>
+    <td class="tg-8d8j">1556 (20.51%)</td>
+    <td class="tg-8d8j">267 (36.43%)</td>
+    <td class="tg-8d8j">1289 (18.81%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">PlatePioneers</td>
+    <td class="tg-8d8j">1396 (18.40%)</td>
+    <td class="tg-8d8j">143 (19.51%)</td>
+    <td class="tg-8d8j">1253 (18.29%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Berl Company</td>
+    <td class="tg-8d8j">906 (11.94%)</td>
+    <td class="tg-8d8j">5 (0.68%)</td>
+    <td class="tg-8d8j">901 (13.15%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">DineLink Intl</td>
+    <td class="tg-8d8j">589 (7.77%)</td>
+    <td class="tg-8d8j">42 (5.73%)</td>
+    <td class="tg-8d8j">547 (7.98%)</td>
+  </tr>
+  <tr>
+    <td class="tg-j6zm">Top Products</td>
+    <td class="tg-8d8j"></td>
+    <td class="tg-8d8j"></td>
+    <td class="tg-8d8j"></td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">DC-01</td>
+    <td class="tg-8d8j">1135 (14.96%)</td>
+    <td class="tg-8d8j">345 (47.07%)</td>
+    <td class="tg-8d8j">790 (11.53%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">TSC-PQB-01</td>
+    <td class="tg-8d8j">1087 (14.33%)</td>
+    <td class="tg-8d8j">389 (53.07%)</td>
+    <td class="tg-8d8j">698 (10.19%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">TSC-PW14X16-01</td>
+    <td class="tg-8d8j">848 (11.18%)</td>
+    <td class="tg-8d8j">283 (38.61%)</td>
+    <td class="tg-8d8j">565 (8.25%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">CMI-PCK-01</td>
+    <td class="tg-8d8j">802 (10.57%)</td>
+    <td class="tg-8d8j">288 (39.29%)</td>
+    <td class="tg-8d8j">514 (7.50%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">PC-05-B1</td>
+    <td class="tg-8d8j">745 (9.82%)</td>
+    <td class="tg-8d8j">220 (30.01%)</td>
+    <td class="tg-8d8j">525 (7.66%)</td>
+  </tr>
+  <tr>
+    <td class="tg-j6zm">Top Distributors</td>
+    <td class="tg-8d8j"></td>
+    <td class="tg-8d8j"></td>
+    <td class="tg-8d8j"></td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Ed Don &amp; Company - Miramar</td>
+    <td class="tg-8d8j">210 (2.77%)</td>
+    <td class="tg-8d8j">0 (0.00%)</td>
+    <td class="tg-8d8j">210 (3.06%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">PFG- Gainesville</td>
+    <td class="tg-8d8j">197 (2.60%)</td>
+    <td class="tg-8d8j">0 (0.00%)</td>
+    <td class="tg-8d8j">197 (2.88%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Ed Don &amp; Company -&nbsp;&nbsp;&nbsp;Woodridge</td>
+    <td class="tg-8d8j">186 (2.45%)</td>
+    <td class="tg-8d8j">0 (0.00%)</td>
+    <td class="tg-8d8j">186 (2.71%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Ed Don &amp; Company - Mira&nbsp;&nbsp;&nbsp;Loma</td>
+    <td class="tg-8d8j">180 (2.37%)</td>
+    <td class="tg-8d8j">0 (0.00%)</td>
+    <td class="tg-8d8j">180 (2.63%)</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">.Ed Don - Miramar</td>
+    <td class="tg-8d8j">162 (2.14%)</td>
+    <td class="tg-8d8j">0 (0.00%)</td>
+    <td class="tg-8d8j">162 (2.36%)</td>
+  </tr>
+  <tr>
+    <td class="tg-j6zm">Top Substrates</td>
+    <td class="tg-bobw">Paper</td>
+    <td class="tg-bobw">Plastic</td>
+    <td class="tg-bobw">Bagasse</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Revenue($103,826,286)</td>
+    <td class="tg-8d8j">$54,838,585 (52.82%)</td>
+    <td class="tg-8d8j">$40,336,669 (38.85%)</td>
+    <td class="tg-8d8j">$4,350,337 (4.19%)</td>
+  </tr>
+  <tr>
+    <td class="tg-j6zm">Quantity Ordered</td>
+    <td class="tg-bobw">Min</td>
+    <td class="tg-bobw">Mean</td>
+    <td class="tg-bobw">Max</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Total Ordered(1,971,237)</td>
+    <td class="tg-8d8j">1</td>
+    <td class="tg-8d8j">61.47</td>
+    <td class="tg-8d8j">23,160</td>
+  </tr>
+  <tr>
+    <td class="tg-j6zm">Unit Price</td>
+    <td class="tg-bobw">Min</td>
+    <td class="tg-bobw">Mean</td>
+    <td class="tg-bobw">Max</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Key Stats</td>
+    <td class="tg-8d8j">$0.16 </td>
+    <td class="tg-8d8j">$62.60 </td>
+    <td class="tg-8d8j">$864.00</td>
+  </tr>
+  <tr>
+    <td class="tg-j6zm">Total Price</td>
+    <td class="tg-bobw">Min</td>
+    <td class="tg-bobw">Mean</td>
+    <td class="tg-bobw">Max</td>
+  </tr>
+  <tr>
+    <td class="tg-7zrl">Key Stats</td>
+    <td class="tg-8d8j">$4.92 </td>
+    <td class="tg-8d8j">$3,430.74 </td>
+    <td class="tg-8d8j">$143,084.74</td>
+  </tr>
+</tbody></table>
