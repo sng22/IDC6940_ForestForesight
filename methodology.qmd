@@ -1,0 +1,147 @@
+---
+title: "Random Forest Analysis of Customer Order Data"
+author: "Your Name"
+format:
+  html:
+    code-fold: true
+    toc: true
+execute:
+  warning: false
+  message: false
+---
+
+## Introduction
+
+This document presents a Random Forest analysis of customer order data, focusing on predicting fulfillment rates based on various features.
+
+## Setup and Data Preparation
+
+First, we'll load the necessary libraries and create our dataset based on the bar graph data.
+
+```{r setup}
+#| label: setup
+
+library(tidyverse)
+library(randomForest)
+library(caret)
+
+# Create the dataset based on the bar graph data
+customer_data <- tibble(
+  Customer = c("Smoothie Island", "Philly Bite", "PlatePioneers", "Berl Company", "DineLink Intl"),
+  TotalOrders = c(1701, 1556, 1396, 906, 589),
+  ClosedShort = c(455, 267, 143, 5, 42),
+  Fulfilled = c(1246, 1289, 1253, 901, 547)
+)
+
+# Feature engineering
+customer_data <- customer_data %>%
+  mutate(
+    FulfillmentRate = Fulfilled / TotalOrders,
+    OrderSize = case_when(
+      TotalOrders >= 1500 ~ "Large",
+      TotalOrders >= 1000 ~ "Medium",
+      TRUE ~ "Small"
+    )
+  )
+
+# Convert categorical variables to factors
+customer_data$Customer <- as.factor(customer_data$Customer)
+customer_data$OrderSize <- as.factor(customer_data$OrderSize)
+
+# Display the prepared data
+knitr::kable(customer_data)
+```
+
+## Data Splitting
+
+We'll split our data into training and testing sets. Note that due to the small sample size, this split may not be very meaningful, but we include it for demonstration purposes.
+
+```{r split-data}
+#| label: split-data
+
+set.seed(123)  # for reproducibility
+train_index <- createDataPartition(customer_data$FulfillmentRate, p = 0.8, list = FALSE)
+train_data <- customer_data[train_index, ]
+test_data <- customer_data[-train_index, ]
+```
+
+## Random Forest Model
+
+Now, we'll train our Random Forest model using the training data.
+
+```{r train-model}
+#| label: train-model
+
+rf_model <- randomForest(
+  FulfillmentRate ~ Customer + TotalOrders + OrderSize,
+  data = train_data,
+  ntree = 500,
+  mtry = 2,
+  importance = TRUE
+)
+
+# Print summary of the model
+print(rf_model)
+```
+
+## Model Evaluation
+
+Let's evaluate our model by making predictions on the test set and calculating performance metrics.
+
+```{r evaluate-model}
+#| label: evaluate-model
+
+# Make predictions on the test set
+predictions <- predict(rf_model, test_data)
+
+# Evaluate the model
+mse <- mean((predictions - test_data$FulfillmentRate)^2)
+rsquared <- 1 - (sum((test_data$FulfillmentRate - predictions)^2) / 
+                 sum((test_data$FulfillmentRate - mean(test_data$FulfillmentRate))^2))
+
+cat("Mean Squared Error:", mse, "\n")
+cat("R-squared:", rsquared, "\n")
+```
+
+## Feature Importance
+
+We can analyze which features are most important in our model's predictions.
+
+```{r feature-importance}
+#| label: feature-importance
+#| fig-cap: "Feature Importance in Random Forest Model"
+
+importance_df <- importance(rf_model) %>%
+  as.data.frame() %>%
+  rownames_to_column("Feature") %>%
+  arrange(desc(IncNodePurity))
+
+ggplot(importance_df, aes(x = reorder(Feature, IncNodePurity), y = IncNodePurity)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  coord_flip() +
+  labs(title = "Feature Importance in Random Forest Model",
+       x = "Feature",
+       y = "Importance (IncNodePurity)")
+```
+
+## Actual vs Predicted Fulfillment Rates
+
+Finally, let's visualize how our model's predictions compare to the actual fulfillment rates.
+
+```{r actual-vs-predicted}
+#| label: actual-vs-predicted
+#| fig-cap: "Actual vs Predicted Fulfillment Rates"
+
+ggplot(data.frame(Actual = test_data$FulfillmentRate, Predicted = predictions), 
+       aes(x = Actual, y = Predicted)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+  labs(title = "Actual vs Predicted Fulfillment Rates",
+       x = "Actual Fulfillment Rate",
+       y = "Predicted Fulfillment Rate")
+```
+
+## Conclusion
+
+This analysis demonstrates the application of Random Forest to predict customer order fulfillment rates. However, due to the very small sample size, these results should be interpreted with caution. In a real-world scenario, you would need a much larger dataset to draw meaningful conclusions and make reliable predictions.
+
