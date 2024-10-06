@@ -1,3 +1,23 @@
+---
+title: "Writing a great story for data science projects"
+subtitle: "This is a Report Template"
+author: "Mika Goins (Advisor: Dr. Seals)"
+date: '`r Sys.Date()`'
+format:
+  html:
+    code-fold: true
+course: Capstone Projects in Data Science
+bibliography: references.bib # file contains bibtex for references
+#always_allow_html: true # this allows to get PDF with HTML features
+self-contained: true
+execute: 
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-style: solid;border-width: 1px;border-color: black;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:12px;
