@@ -1,0 +1,133 @@
+---
+title: "Writing a great story for data science projects"
+subtitle: "This is a Report Template"
+author: "Mika Goins (Advisor: Dr. Seals)"
+date: '`r Sys.Date()`'
+format:
+  html:
+    code-fold: true
+course: Capstone Projects in Data Science
+bibliography: references.bib # file contains bibtex for references
+self-contained: true
+execute: 
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```r
+citation()
+citation("tidyverse")
+citation("MASS")
+citation("car")
+
+
+
+# Random Forest Methodology for Data Statistics Analysis
+
+## 1. Data Preparation
+- Collect and clean your dataset
+- Handle missing values and outliers
+- Encode categorical variables if necessary
+- Split the data into training and testing sets (e.g., 70-30 or 80-20 split)
+
+## 2. Feature Selection
+- Identify relevant features for your analysis
+- Consider using feature importance techniques to select the most impactful variables
+
+## 3. Model Creation
+- Choose the number of trees for your forest (start with 100-500)
+- Set other hyperparameters (e.g., max_depth, min_samples_split, min_samples_leaf)
+- Create the random forest model using your chosen programming environment (e.g., Python's scikit-learn)
+
+## 4. Model Training
+- Fit the random forest model to your training data
+- Use cross-validation to ensure robust performance
+
+## 5. Model Evaluation
+- Predict outcomes for the test set
+- Calculate relevant performance metrics (e.g., accuracy, precision, recall, F1-score for classification; RMSE, MAE for regression)
+- Generate a confusion matrix for classification problems
+
+## 6. Feature Importance Analysis
+- Extract feature importances from the model
+- Visualize feature importances to understand which variables have the most impact
+
+## 7. Hyperparameter Tuning
+- Use techniques like grid search or random search to optimize hyperparameters
+- Retrain the model with the best hyperparameters
+
+## 8. Model Interpretation
+- Analyze partial dependence plots to understand the relationship between features and the target variable
+- Consider using SHAP (SHapley Additive exPlanations) values for more detailed feature impact analysis
+
+## 9. Validation on Holdout Set
+- If available, validate the final model on a separate holdout set to ensure generalizability
+
+## 10. Deployment and Monitoring
+- Deploy the model in your desired environment
+- Set up monitoring to track model performance over time
+- Plan for periodic retraining to maintain accuracy
+# Key Equations for Random Forest
+
+1. **Ensemble Prediction (Classification)**
+
+   For a classification problem with K classes, the random forest prediction is typically:
+
+   $$\hat{y} = \text{mode}(h_1(x), h_2(x), ..., h_B(x))$$
+
+   Where:
+   - $\hat{y}$ is the predicted class
+   - $h_b(x)$ is the prediction of the $b$-th tree
+   - $B$ is the total number of trees in the forest
+
+2. **Ensemble Prediction (Regression)**
+
+   For regression, the prediction is usually the average:
+
+   $$\hat{y} = \frac{1}{B} \sum_{b=1}^B h_b(x)$$
+
+3. **Gini Impurity**
+
+   Used for splitting nodes in classification trees:
+
+   $$\text{Gini}(T) = 1 - \sum_{i=1}^K p_i^2$$
+
+   Where:
+   - $T$ is the current node
+   - $K$ is the number of classes
+   - $p_i$ is the proportion of samples of class $i$ in the node
+
+4. **Information Gain**
+
+   Used to evaluate splits:
+
+   $$\text{IG}(T, a) = H(T) - \sum_{v \in \text{values}(a)} \frac{|T_v|}{|T|} H(T_v)$$
+
+   Where:
+   - $H(T)$ is the entropy of node $T$
+   - $a$ is the attribute used for splitting
+   - $T_v$ is the subset of $T$ where attribute $a$ has value $v$
+
+5. **Out-of-Bag Error Estimate**
+
+   $$\text{OOB Error} = \frac{1}{n} \sum_{i=1}^n I(\hat{y}_i^{\text{OOB}} \neq y_i)$$
+
+   Where:
+   - $n$ is the number of samples
+   - $\hat{y}_i^{\text{OOB}}$ is the prediction for the $i$-th sample using only the trees where this sample was OOB
+   - $I()$ is the indicator function
+
+6. **Feature Importance**
+
+   $$\text{Importance}(x_j) = \frac{1}{N_T} \sum_{T} \sum_{t \in T: v(s_t)=x_j} p(t) \Delta i(s_t, t)$$
+
+   Where:
+   - $N_T$ is the number of trees
+   - $T$ represents a tree in the forest
+   - $t$ is a node in tree $T$
+   - $v(s_t)$ is the feature used in split $s_t$
+   - $p(t)$ is the proportion of samples reaching node $t$
+   - $\Delta i(s_t, t)$ is the decrease in impurity
