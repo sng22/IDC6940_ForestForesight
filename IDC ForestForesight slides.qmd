@@ -27,8 +27,9 @@ library(ggplot2)
 library(tidyr)
 library(gridExtra)
 
+sample_data <-read_xlsx("SaleData1.xlsx")
 # Take first 100 rows
-sample_data <- head(SaleData1, 100)
+sample_data <- head(sample_data, 100)
 
 # Prepare data for modeling
 model_data <- sample_data %>%
