@@ -19,41 +19,140 @@ editor:
 ---
 
 ```{r}
-#| label: fig-top-customers
-#| fig-cap: "Top Customers Order Data"
-#| warning: false
-#| message: false
-
-library(tidyverse)
+# Load required libraries
+library(readxl)
+library(randomForest)
+library(dplyr)
 library(ggplot2)
+library(tidyr)
+library(gridExtra)
 
-# Create the data frame
-top_customers_data <- tribble(
-  ~Customer, ~TotalOrders, ~ClosedShort, ~Fulfilled,
-  "Smoothie Island", 1701, 455, 1246,
-  "Philly Bite", 1556, 267, 1289,
-  "PlatePioneers", 1396, 143, 1253,
-  "Berl Company", 906, 5, 901,
-  "DineLink Intl", 589, 42, 547
+# Take first 100 rows
+sample_data <- head(SaleData1, 100)
+
+# Prepare data for modeling
+model_data <- sample_data %>%
+  # Select relevant columns
+  select(OPCO, Product, Class, SalesOrderStatus, SalesItemStatus,
+         qtyOrdered, QuantityFulfilled, UnitPrice, TotalPrice) %>%
+  # Convert categorical variables to factors
+  mutate(across(c(OPCO, Product, Class, SalesOrderStatus, SalesItemStatus), as.factor)) %>%
+  na.omit()
+
+# Split predictors and response
+X <- model_data %>% select(-TotalPrice)
+y <- model_data$TotalPrice
+
+# Train random forest model
+set.seed(123)
+rf_model <- randomForest(
+  x = X,
+  y = y,
+  ntree = 500,
+  importance = TRUE
 )
 
-# Reshape the data for ggplot
-top_customers_long <- top_customers_data %>%
-  pivot_longer(cols = c(TotalOrders, ClosedShort, Fulfilled),
-               names_to = "OrderType",
-               values_to = "Count")
+# Create performance analysis dataframe
+performance_df <- data.frame(
+  predicted = predict(rf_model),
+  actual = y
+)
 
-# Create the bar graph
-ggplot(top_customers_long, aes(x = Customer, y = Count, fill = OrderType)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  scale_fill_manual(values = c("TotalOrders" = "#8884d8", 
-                               "ClosedShort" = "#82ca9d", 
-                               "Fulfilled" = "#ffc658")) +
+# Calculate performance metrics
+metrics <- data.frame(
+  Metric = c("R-squared", "Mean Abs Error", "RMSE", "Mean Error %"),
+  Value = c(
+    round(1 - sum((performance_df$actual - performance_df$predicted)^2) / 
+          sum((performance_df$actual - mean(performance_df$actual))^2), 3),
+    round(mean(abs(performance_df$actual - performance_df$predicted)), 2),
+    round(sqrt(mean((performance_df$actual - performance_df$predicted)^2)), 2),
+    round(mean(abs(performance_df$actual - performance_df$predicted)/performance_df$actual * 100), 2)
+  )
+)
+
+# Create visualizations
+# 1. Actual vs Predicted Plot
+p1 <- ggplot(performance_df, aes(x = actual, y = predicted)) +
+  geom_point(alpha = 0.6, color = "blue") +
+  geom_abline(slope = 1, intercept = 0, color = "red", linetype = "dashed") +
+  labs(title = "Actual vs Predicted Total Price",
+       x = "Actual Total Price",
+       y = "Predicted Total Price") +
+  theme_minimal()
+
+# 2. Variable Importance Plot
+imp_df <- data.frame(
+  Variable = rownames(importance(rf_model)),
+  IncMSE = importance(rf_model)[,1]
+) %>%
+  arrange(desc(IncMSE))
+
+p2 <- ggplot(imp_df, aes(x = reorder(Variable, IncMSE), y = IncMSE)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  coord_flip() +
+  labs(title = "Variable Importance",
+       x = "Variables",
+       y = "% Increase in MSE") +
+  theme_minimal()
+
+# 3. Error Analysis by OPCO
+performance_df$OPCO <- model_data$OPCO
+error_by_opco <- performance_df %>%
+  group_by(OPCO) %>%
+  summarise(
+    mean_error = mean(abs(actual - predicted)),
+    count = n()
+  ) %>%
+  arrange(desc(mean_error))
+
+p3 <- ggplot(error_by_opco, aes(x = reorder(OPCO, -mean_error), y = mean_error)) +
+  geom_bar(stat = "identity", fill = "lightgreen") +
+  labs(title = "Mean Absolute Error by OPCO",
+       x = "OPCO",
+       y = "Mean Absolute Error") +
   theme_minimal() +
-  labs(title = "Top Customers Order Data",
-       x = "Customer",
-       y = "Number of Orders",
-       fill = "Order Type") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# 4. Error Distribution
+performance_df$error_percent <- (performance_df$predicted - performance_df$actual) / 
+                               performance_df$actual * 100
+
+p4 <- ggplot(performance_df, aes(x = error_percent)) +
+  geom_histogram(fill = "salmon", bins = 20) +
+  labs(title = "Distribution of Prediction Errors (%)",
+       x = "Prediction Error (%)",
+       y = "Count") +
+  theme_minimal()
+
+# Print results
+print("Model Performance Metrics:")
+print(metrics)
+
+# Display plots in a grid
+grid.arrange(p1, p2, p3, p4, ncol = 2)
+
+# Additional Analysis: Performance by Class
+error_by_class <- performance_df %>%
+  mutate(Class = model_data$Class) %>%
+  group_by(Class) %>%
+  summarise(
+    mean_error = mean(abs(actual - predicted)),
+    mean_error_percent = mean(abs(actual - predicted)/actual * 100),
+    count = n()
+  ) %>%
+  arrange(desc(mean_error))
+
+print("\nError Analysis by Class:")
+print(error_by_class)
+
+# Top influential categorical values
+categorical_importance <- data.frame(
+  Feature = names(rf_model$importance[,1]),
+  Importance = rf_model$importance[,1]
+) %>%
+  arrange(desc(Importance)) %>%
+  head(10)
+
+print("\nTop 10 Most Important Features:")
+print(categorical_importance)
 ```
